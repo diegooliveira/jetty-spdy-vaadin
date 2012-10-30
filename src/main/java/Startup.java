@@ -17,7 +17,7 @@ public class Startup {
 		
 		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
-        context.setInitParameter("productionMode", "false");
+        context.setInitParameter("productionMode", "true");
         ServletHolder holder = new ServletHolder(ApplicationServlet.class);
         holder.setInitParameter("application", VaadinApplication.class.getName());
         context.addServlet(holder, "/*");
@@ -30,7 +30,7 @@ public class Startup {
         Server server = new Server();
         
         HTTPSPDYServerConnector spdyConnector = new HTTPSPDYServerConnector(server, fact);
-        spdyConnector.setPort(443);
+        spdyConnector.setPort(8080);
         server.addConnector(spdyConnector);
         
         server.setHandler(context);
