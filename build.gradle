@@ -1,42 +1,46 @@
+
 apply plugin: 'java'
+apply plugin: 'eclipse'
+
 
 repositories {
-    flatDir {
-        dirs 'lib/jetty-9/'
-    }
-    flatDir {
-        dirs 'lib/vaadin-6/'
-	}
+    //flatDir {
+    //    dirs 'lib/jetty-9/'
+    //}
+    //flatDir {
+    //    dirs 'lib/vaadin-6/'
+    //}
+    mavenCentral()
 }
 
 
 task run(type: JavaExec, dependsOn: build) { 
-	print sourceSets.main
-	main = 'Startup'
-	jvmArgs '-Xbootclasspath/p:' + file('lib/boot/npn-boot-1.1.0.v20120525.jar')
-	classpath sourceSets.main.output.classesDir
-	classpath configurations.runtime
-	
+    print sourceSets.main
+    main = 'Startup'
+    jvmArgs '-Xbootclasspath/p:' + file('lib/boot/npn-boot-1.1.5.v20130313.jar')
+    classpath sourceSets.main.output.classesDir
+    classpath configurations.runtime
 }
 
-
-
 dependencies {
-    compile ':vaadin:6.8.4'
-    compile ':vaadin:6.8.4'
-    compile ':vaadin-lazyquerycontainer:1.2.11'
-    compile ':jetty-continuation:9.0.0.M0'
-    compile ':jetty-io:9.0.0.M0'
-    compile ':jetty-http:9.0.0.M0'
-    compile ':jetty-server:9.0.0.M0'
-    compile ':jetty-security:9.0.0.M0'
-    compile ':spdy-core:9.0.0.M0'
-    compile ':jetty-util:9.0.0.M0'
-    compile ':jetty-servlet:9.0.0.M0'
-    compile ':jetty-servlets:9.0.0.M0'
-    compile ':servlet-api:3.0'
-    compile ':spdy-client:9.0.0.M0'
-    compile ':spdy-http-server:9.0.0.M0'
-    compile ':spdy-core:9.0.0.M0'
-    compile ':spdy-server:9.0.0.M0'
+    compile 'com.vaadin:vaadin:6.8.4'
+    compile 'com.vaadin:vaadin:6.8.4'
+    //compile 'com.vaadin:vaadin-lazyquerycontainer:1.2.11'
+
+    compile 'org.eclipse.jetty:jetty-continuation:9.0.0.M5'
+    compile 'org.eclipse.jetty:jetty-io:9.0.0.M5'
+    compile 'org.eclipse.jetty:jetty-http:9.0.0.M5'
+    compile 'org.eclipse.jetty:jetty-server:9.0.0.M5'
+    compile 'org.eclipse.jetty:jetty-security:9.0.0.M5'
+    compile 'org.eclipse.jetty:jetty-util:9.0.0.M5'
+    compile 'org.eclipse.jetty:jetty-servlet:9.0.0.M5'
+    compile 'org.eclipse.jetty:jetty-servlets:9.0.0.M5'
+    
+    compile 'javax.servlet:javax.servlet-api:3.0.1'
+
+    compile 'org.eclipse.jetty.spdy:spdy-core:9.0.0.M5'
+    compile 'org.eclipse.jetty.spdy:spdy-client:9.0.0.M5'
+    compile 'org.eclipse.jetty.spdy:spdy-http-server:9.0.0.M5'
+    compile 'org.eclipse.jetty.spdy:spdy-core:9.0.0.M5'
+    compile 'org.eclipse.jetty.spdy:spdy-server:9.0.0.M5'
 }
