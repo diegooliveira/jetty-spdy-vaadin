@@ -1,5 +1,6 @@
 import static java.util.Arrays.asList;
 
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +29,6 @@ import edu.diego.vaadin.VaadinApplication;
 public class Startup {
 
 	public static void main(String[] args) throws Exception {
-		
 		
 		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
